@@ -1,0 +1,268 @@
+description: Revolution Wind Layout using Jensen-Jimenez
+farm:
+  layout_x:
+  - 35188
+  - 18520
+  - 14816
+  - 11112
+  - 33336
+  - 22224
+  - 18520
+  - 14816
+  - 12964
+  - 11112
+  - 31484
+  - 12964
+  - 11112
+  - 9260
+  - 7408
+  - 5556
+  - 3704
+  - 29632
+  - 1852
+  - 0
+  - 12964
+  - 11112
+  - 9260
+  - 7408
+  - 5556
+  - 3704
+  - 12964
+  - 11112
+  - 27780
+  - 9260
+  - 7408
+  - 5556
+  - 3704
+  - 16668
+  - 14816
+  - 12964
+  - 7408
+  - 5556
+  - 25928
+  - 16668
+  - 14816
+  - 12964
+  - 11112
+  - 9260
+  - 7408
+  - 16668
+  - 14816
+  - 12964
+  - 11112
+  - 24076
+  - 9260
+  - 11112
+  - 35188
+  - 33336
+  - 31484
+  - 29632
+  - 27780
+  - 24076
+  - 22224
+  - 18520
+  - 25928
+  - 24076
+  - 22224
+  - 20372
+
+  layout_y:
+  - 5556
+  - 5556
+  - 5556
+  - 5556
+  - 5556
+  - 7408
+  - 7408
+  - 7408
+  - 7408
+  - 7408
+  - 5556
+  - 9260
+  - 9260
+  - 9260
+  - 9260
+  - 9260
+  - 9260
+  - 5556
+  - 9260
+  - 9260
+  - 11112
+  - 11112
+  - 11112
+  - 11112
+  - 11112
+  - 11112
+  - 12964
+  - 12964
+  - 5556
+  - 12964
+  - 12964
+  - 12964
+  - 12964
+  - 14816
+  - 14816
+  - 14816
+  - 14816
+  - 14816
+  - 5556
+  - 16668
+  - 16668
+  - 16668
+  - 16668
+  - 16668
+  - 16668
+  - 18520
+  - 18520
+  - 18520
+  - 18520
+  - 5556
+  - 18520
+  - 20372
+  - 3704
+  - 3704
+  - 3704
+  - 3704
+  - 3704
+  - 3704
+  - 3704
+  - 3704
+  - 1852
+  - 1852
+  - 1852
+  - 1852
+
+  turbine_type:
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+  - 11MW_206m
+floris_version: v3.0.0
+flow_field:
+  air_density: 1.225
+  reference_wind_height: -1
+  wind_directions:
+  - 270.0
+  wind_shear: 0.12
+  wind_speeds:
+  - 8.98
+  wind_veer: 0.0
+  turbulence_intensities:
+  - 0.06
+logging:
+  console:
+    enable: true
+    level: WARNING
+  file:
+    enable: false
+    level: WARNING
+name: Revolution Wind Layout Jensen
+solver:
+  turbine_grid_points: 3
+  type: turbine_grid
+wake:
+  enable_secondary_steering: true
+  enable_transverse_velocities: true
+  enable_yaw_added_recovery: true
+  model_strings:
+    combination_model: sosfs
+    deflection_model: jimenez
+    turbulence_model: crespo_hernandez
+    velocity_model: jensen
+  wake_deflection_parameters:
+    gauss:
+      ad: 0.0
+      alpha: 0.58
+      bd: 0.0
+      beta: 0.077
+      dm: 1.0
+      ka: 0.38
+      kb: 0.004
+    jimenez:
+      ad: 0.0
+      bd: 0.0
+      kd: 0.05
+  wake_turbulence_parameters:
+    crespo_hernandez:
+      ai: 0.8
+      constant: 0.5
+      downstream: -0.32
+      initial: 0.1
+  wake_velocity_parameters:
+    cc:
+      a_f: 3.11
+      a_s: 0.179367259
+      alpha_mod: 1.0
+      b_f: -0.68
+      b_s: 0.0118889215
+      c_f: 2.41
+      c_s1: 0.0563691592
+      c_s2: 0.13290157
+    gauss:
+      alpha: 0.58
+      beta: 0.077
+      ka: 0.38
+      kb: 0.004
+    jensen:
+      we: 0.05
+  enable_active_wake_mixing: false

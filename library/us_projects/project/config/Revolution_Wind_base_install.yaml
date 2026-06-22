@@ -1,0 +1,83 @@
+# Site + Plant Parameters
+site:
+  depth: 34
+  distance: 82 #1713
+  distance_to_landfall: 74
+  mean_windspeed: 8.16811714317274
+plant:
+  layout: custom
+  num_turbines: 64
+  row_spacing: 8.61
+  substation_distance: 1
+  turbine_spacing: 8.61
+landfall:
+  interconnection_distance: 28  # COE Review 2021
+  trench_length: 28   # COE Review 2021
+port:
+  sub_assembly_lines: 1  # COE Review 2021
+  turbine_assembly_cranes: 1  # COE Review 2021
+turbine: 11MW_generic
+oss_design:
+  num_substations: 2
+# Vessels
+array_cable_install_vessel: example_cable_lay_vessel
+export_cable_install_vessel: example_cable_lay_vessel
+export_cable_bury_vessel: example_cable_lay_vessel
+oss_install_vessel: example_heavy_lift_vessel
+spi_vessel: example_scour_protection_vessel
+wtiv: example_wtiv
+# Module Specifc
+#ArrayCableInstallation:
+#  site:
+#    distance: 7593 # removed supply chain distance as cables came on a barge from Corinth, Greece, (no CLV transporting the cables, so transportation assumed to be included on $/km cost of the cable)
+ExportCableInstallation:
+  site:
+    distance: 1304 # cable lay vessel transporting cables from Charleston, South Carolina
+TurbineInstallation:
+  feeder: example_feeder
+  num_feeders: 2
+OffshoreSubstationInstallation:
+  feeder: example_feeder
+  num_feeders: 1
+  site:
+      distance: 6102 # assumed topside and pile directly transported from Rotterdam Netherlands by HTV
+MonopileInstallation:
+  feeder: example_feeder
+  num_feeders: 3
+  site:
+    distance: 1713 # Modeling feedering from Canada
+array_system_design:
+  cables:
+  - __XLPE_630mm_66kV
+  location_data: revolution_wind_layout_base
+export_system_design:
+  cables: XLPE_1200mm_220kV
+scour_protection_design:
+  cost_per_tonne: 40
+  scour_protection_depth: 2
+# Configured Phases
+design_phases:
+- MonopileDesign
+- ScourProtectionDesign
+- CustomArraySystemDesign
+- ElectricalDesign
+install_phases:
+  ArrayCableInstallation: 0
+  ExportCableInstallation: 0
+  MonopileInstallation: !!python/tuple
+  - ScourProtectionInstallation
+  - 0.5
+  OffshoreSubstationInstallation: 0
+  ScourProtectionInstallation: 0
+  TurbineInstallation: !!python/tuple
+  - MonopileInstallation
+  - 0.1
+
+project_parameters:
+  turbine_capex: 1424
+  site_auction_price: 1683089.765 # 2023 OWMR number for Revolution Wind in 2020 USD
+  site_assessment_cost: 6000000  # modified so that total Project Development is 206m in 2020 USD
+  construction_plan_cost: 100000000 # modified so that total Project Development is 206m in 2020 USD     
+  installation_plan_cost: 100000000 # modified so that total Project Development is 206m in 2020 USD
+  procurement_contingency_factor: 0.043125 # -25% of 0.0575
+  installation_contingency_factor: 0.25875 # -25% of 0.345

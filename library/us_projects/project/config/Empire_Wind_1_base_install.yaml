@@ -1,0 +1,93 @@
+# Site + Plant Parameters
+site:
+  depth: 34.90
+  distance: 75
+  distance_to_landfall: 74
+  mean_windspeed: 7.54758261874344
+plant:
+  layout: custom
+  num_turbines: 54
+  row_spacing: 5.48
+  substation_distance: 1
+  turbine_spacing: 5.48
+landfall:
+  interconnection_distance: 28  # COE Review 2021
+  trench_length: 28   # COE Review 2021
+port:
+  sub_assembly_lines: 1  # COE Review 2021
+  turbine_assembly_cranes: 1  # COE Review 2021
+turbine: 15MW_generic
+oss_design:
+  num_substations: 1
+# Vessels
+array_cable_install_vessel: example_cable_lay_vessel
+export_cable_install_vessel: example_cable_lay_vessel
+export_cable_bury_vessel: example_cable_lay_vessel
+oss_install_vessel: example_heavy_lift_vessel
+spi_vessel: example_scour_protection_vessel
+wtiv: example_wtiv
+# Module Specific
+monopile_design:
+  monopile_steel_cost: 4000 #+10% because of Glauconite
+  load_factor: 2
+#ElectricalDesign:
+#  onshore_substation_design:
+#    onshore_converter_cost: 150000000
+ArrayCableInstallation:
+  site:
+    distance: 7593 # cable lay vessel transporting cables from Arco Felice, Italy
+ExportCableInstallation:
+  site:
+    distance: 1304 # cable lay vessel transporting cables from Charleston, South Carolina
+TurbineInstallation:
+  feeder: example_feeder
+  num_feeders: 2
+OffshoreSubstationInstallation:
+  feeder: example_heavy_feeder
+  num_feeders: 1
+  site:
+      distance: 6102 #topside and pile directly transported from Europe by HTV
+MonopileInstallation:
+  feeder: example_heavy_feeder
+  num_feeders: 3
+  site:
+    distance: 6072 # Modeling feedering from Maasvlakte, Netherland (Sif Group)
+array_system_design:
+  cables:
+  - __XLPE_630mm_66kV
+  location_data: empire_wind_1_layout_base
+export_system_design:
+  cables: XLPE_1000mm_220kV
+  percent_added_length: 0.0
+scour_protection_design:
+  cost_per_tonne: 40
+  scour_protection_depth: 1
+MonopileInstallation:
+  wtiv: example_heavy_lift_vessel
+  feeder: example_heavy_feeder
+  num_feeders: 1
+# Configured Phases
+design_phases:
+- MonopileDesign
+- ScourProtectionDesign
+- CustomArraySystemDesign
+- ElectricalDesign
+install_phases:
+  ArrayCableInstallation: 0
+  ExportCableInstallation: 0
+  MonopileInstallation: !!python/tuple
+  - ScourProtectionInstallation
+  - 0.5
+  OffshoreSubstationInstallation: 0
+  ScourProtectionInstallation: 0
+  TurbineInstallation: !!python/tuple
+  - MonopileInstallation
+  - 0.1
+
+# Project Inputs
+project_parameters:
+  turbine_capex: 1789
+  site_auction_price: 52105118
+  site_assessment_cost: 63000000   # modified so that total Project Development without lease area is 250m
+  construction_plan_cost: 87000000 # modified so that total Project Development without lease area is 250m
+  installation_plan_cost: 100000000 # modified so that total Project Development without lease area is 250m

@@ -1,0 +1,87 @@
+# Site + Plant Parameters
+site:
+  depth: 47.52
+  distance: 103 #1713
+  distance_to_landfall: 169
+  mean_windspeed: 8.16811714317274
+plant:
+  layout: custom
+  num_turbines: 84
+  row_spacing: 8.61
+  substation_distance: 1
+  turbine_spacing: 8.61
+landfall:
+  interconnection_distance: 28  # COE Review 2021
+  trench_length: 28   # COE Review 2021
+port:
+  sub_assembly_lines: 1  # COE Review 2021
+  turbine_assembly_cranes: 1  # COE Review 2021
+turbine: 11MW_generic
+oss_design:
+  num_substations: 1
+# Vessels
+array_cable_install_vessel: example_cable_lay_vessel
+export_cable_install_vessel: example_cable_lay_vessel
+export_cable_bury_vessel: example_cable_lay_vessel
+oss_install_vessel: example_heavy_lift_vessel
+spi_vessel: example_scour_protection_vessel
+wtiv: example_wtiv
+# Module Specific
+#ElectricalDesign:
+#  onshore_substation_design:
+#    onshore_converter_cost: 150000000
+monopile_design:
+  monopile_steel_cost: 4000 #+10% because of Glauconite
+  load_factor: 2
+ArrayCableInstallation:
+  site:
+    distance: 7593 # cable lay vessel transporting cables from Arco Felice, Italy
+ExportCableInstallation:
+  site:
+    distance: 6413 # cable lay vessel transporting cables from Fredrikstad, Norway
+TurbineInstallation:
+  feeder: example_feeder
+  num_feeders: 2
+OffshoreSubstationInstallation:
+  feeder: example_heavy_feeder
+  num_feeders: 1
+  site:
+      distance: 6102 #topside and pile directly transported from Rotterdam Netherlands by HTV
+MonopileInstallation:
+  feeder: example_heavy_feeder
+  num_feeders: 3
+  site:
+    distance: 1713 # Modeling feedering from Canada
+array_system_design:
+  cables:
+  - __XLPE_630mm_66kV
+  location_data: sunrise_wind_layout_base
+export_system_design:
+  cables: HVDC_2000mm_320kV
+scour_protection_design:
+  cost_per_tonne: 40
+  scour_protection_depth: 2
+# Configured Phases
+design_phases:
+- MonopileDesign
+- ScourProtectionDesign
+- CustomArraySystemDesign
+- ElectricalDesign
+install_phases:
+  ArrayCableInstallation: 0
+  ExportCableInstallation: 0
+  MonopileInstallation: !!python/tuple
+  - ScourProtectionInstallation
+  - 0.5
+  OffshoreSubstationInstallation: 0
+  ScourProtectionInstallation: 0
+  TurbineInstallation: !!python/tuple
+  - MonopileInstallation
+  - 0.1
+
+project_parameters:
+  turbine_capex: 1789
+  site_auction_price: 2039967.87175852 # 2023 OWMR number for Sunrise Wind
+  site_assessment_cost: 60000000  # modified so that total Project Development is 250m
+  construction_plan_cost: 90000000 # modified so that total Project Development is 250m       
+  installation_plan_cost: 100000000 # modified so that total Project Development is 250m  
